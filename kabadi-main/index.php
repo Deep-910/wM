@@ -11,8 +11,8 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-  <link rel = "icon" href="images/logo.gif" type = "images/x-png"> 
-  <link rel = "icon" href="images/logo.gif" type = "images/x-icon"> 
+  <link rel="icon" href="images/logo.gif" type="images/x-png">
+  <link rel="icon" href="images/logo.gif" type="images/x-icon">
   <title>kABADIWALA</title>
 
   <!-- slider stylesheet -->
@@ -21,7 +21,6 @@
 
   <!-- font awesome style -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-
 
   <!-- bootstrap core css -->
   <link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
@@ -110,8 +109,48 @@
               <div class="row">
                 <div class="col-md-4">
                   <div class="img-box">
-                    <img src="images/earth.gif" alt="">
+                    <div class="container_form">
+                      
+                      <div class="container">
+                        <h2>Contact Us</h2>
+                        <form action="server-side/process.php" method="post" id="contactForm">
+                          <div class="form-group">
+                            <label for="name">Name:</label>
+                            <input  type="text" id="name" name="name" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="phoneNumber">Phone Number:</label>
+                            <input type="text"  id="phoneNumber" name="phoneNumber" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="email">Email:</label>
+                            <input type="email" id="email" name="email" required>
+                          </div>
+                          <div class="form-group">
+                            <label for="product">Select Product:</label>
+                            <select id="product" name="product">
+                              <option value="product1">Product 1</option>
+                              <option value="product2">Product 2</option>
+                              <option value="product3">Product 3</option>
+                            </select>
+                          </div>
+                          <div class="form-group">
+                            <label for="message">Message:</label>
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                          </div>
+                          <div class="otp-input-container">
+                            <label for="otp-input">Enter OTP:</label>
+                            <input type="text" class="otp-input" name="otp1" maxlength="1" required>
+                            <input type="text" class="otp-input" name="otp2" maxlength="1" required>
+                            <input type="text" class="otp-input" name="otp3" maxlength="1" required>
+                            <input type="text" class="otp-input" name="otp4" maxlength="1" required>
+                        </div>
+                          <button type="submit"  name="send" value="send" class="submit-btn">Submit</button>
+                        </form>
+                      </div>
+                    </div>
                   </div>
+
                 </div>
                 <div class="col-md-8">
                   <div class="detail-box">
@@ -136,7 +175,7 @@
               </div>
             </div>
           </div>
-          
+
           <div class="carousel-item">
             <div class="container">
               <div class="row">
@@ -210,7 +249,7 @@
              h-2.059c-2.542,0-4.81-0.953-6.389-2.685c-1.589-1.742-2.337-4.113-2.106-6.676l12.609-139.691l28.959,0.006l-4.59,50.852
              c-0.735,8.137,1.78,15.821,7.083,21.637c5.292,5.806,12.685,9.004,20.813,9.004h56.338L396.457,282.588z" />
               <g>
-              </g>              
+              </g>
             </svg>
           </div>
           <div class="detail-box">
@@ -526,7 +565,7 @@
               </div>
               <div class="detail-box">
                 <div class="star_container">
-                  </div>
+                </div>
                 <div class="text">
                   <h6>
                     Price
@@ -784,7 +823,7 @@
             </div>
             <div class="detail-box">
               <div class="star_container">
-                 </div>
+              </div>
               <div class="text">
                 <h6>
                   MONITOR-
@@ -1079,6 +1118,103 @@
         }
       }
     });
-  </script>
+ 
+ 
+    // // JavaScript code for OTP validation and form submission can be added here.
+    // document.getElementById("contactForm").addEventListener("submit", function (event) {
+    //   event.preventDefault();
+    //   // Add your form submission and validation logic here
+    //   // You can use JavaScript to validate the OTP, send data to a server, etc.
+    // });
+  
+  document.getElementById("otpForm").addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    // Get OTP input values
+    const otp1 = document.querySelector("input[name='otp1']").value;
+    const otp2 = document.querySelector("input[name='otp2']").value;
+    const otp3 = document.querySelector("input[name='otp3']").value;
+    const otp4 = document.querySelector("input[name='otp4']").value;
+
+    // Concatenate OTP digits to form the complete OTP
+    const enteredOTP = otp1 + otp2 + otp3 + otp4;
+
+    // Replace this with your actual OTP value for validation
+    const expectedOTP = "1234";
+
+    // Check if entered OTP matches the expected OTP
+    if (enteredOTP === expectedOTP) {
+        alert("OTP is valid. You can proceed.");
+        // Add code to submit the form or navigate to the next step
+    } else {
+        alert("Invalid OTP. Please try again.");
+        // Optionally, you can clear the OTP input fields here
+        document.querySelector("input[name='otp1']").value = "";
+        document.querySelector("input[name='otp2']").value = "";
+        document.querySelector("input[name='otp3']").value = "";
+        document.querySelector("input[name='otp4']").value = "";
+    }
+});
+</script>
 </body>
 </html>
+<?php
+if(isset($_POST['send'])) 
+
+{
+$name = $_POST['name'];
+$email = $_POST['phoneNumber'];
+$name = $_POST['Product'];
+$name = $_POST['send'];
+
+//Import PHPMailer classes into the global namespace
+//These must be at the top of your script, not inside a function
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
+//Load Composer's autoloader
+require 'PHPMailer/Exception.php';
+require 'PHPMailer/PHPMailer.php';
+require 'PHPMailer/SMTP.php';
+
+
+//Create an instance; passing `true` enables exceptions
+$mail = new PHPMailer(true);
+
+try {
+    //Server settings
+    $mail->SMTPDebug = SMTP::DEBUG_SERVER;                      //Enable verbose debug output
+    $mail->isSMTP();                                            //Send using SMTP
+    $mail->Host       = 'smtp.gmail.com.';                     //Set the SMTP server to send through
+    $mail->SMTPAuth   = true;                                   //Enable SMTP authentication
+    $mail->Username   = 'd098@gmail.com';                     //SMTP username
+    $mail->Password   = 'secret';                               //SMTP password
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            //Enable implicit TLS encryption
+    $mail->Port       = 465;                                    //TCP port to connect to; use 587 if you have set `SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS`
+
+    //Recipients
+    $mail->setFrom('d098@gmail.com', 'Contact Form');
+    $mail->addAddress('dibg76@gmail.com', 'primary');     //Add a recipient
+    $mail->addAddress('ellen@example.com');               //Name is optional
+    $mail->addReplyTo('info@example.com', 'Information');
+    $mail->addCC('cc@example.com');
+    $mail->addBCC('bcc@example.com');
+
+    //Attachments
+    $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
+    $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
+
+    //Content
+    $mail->isHTML(true);                                  //Set email format to HTML
+    $mail->Subject = 'Here is the subject';
+    $mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+   
+
+    $mail->send();
+    echo 'Message has been sent';
+} catch (Exception $e) {
+    echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
+}
+
+?>

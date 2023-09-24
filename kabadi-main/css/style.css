@@ -208,12 +208,98 @@ a:focus {
 }
 
 /*end header section*/
+/* form section start*/
+.container_form {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+  width: 500px;
+  height: 550px;
+  text-align: left;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.container_form .container_form, .container_form h2 {
+  justify-content: center;
+  text-align: center;
+  position: absolute;
+  margin-bottom: 100%;
+}
+.container_form .form-group {
+  margin-bottom: 20px;
+}
+.container_form label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  font-size: 15px;
+}
+.container_form input[type=text],
+.container_form input[type=email] {
+  width: 100%;
+  height: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+.container_form select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+.container_form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 5px;
+}
+.container_form select {
+  height: 35px;
+}
+.container_form textarea {
+  resize: vertical;
+  height: 100px;
+}
+.container_form .otp-input-container {
+  display: flex;
+  justify-content: space-between;
+}
+.container_form .otp-input {
+  width: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 10px;
+}
+.container_form .submit-btn {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+/* form section end*/
 /* slider section */
 .slider_section {
   height: 100%;
   display: flex;
   align-items: center;
   padding-bottom: 75px;
+  margin-right: 31px;
+  margin-left: 22px;
 }
 .slider_section .img-box img {
   width: 100%;
@@ -634,6 +720,7 @@ a:focus {
 .info_section .info_news form input {
   width: 100%;
   padding: 3px 10px;
+  margin-right: 44%;
 }
 .info_section .info_news form button {
   display: inline-block;
